@@ -1,8 +1,10 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About - Strongwave Fitness</title>
+    <title>Information - Strong Wave Fitness</title>
+
     <style>
         body {
             margin: 0;
@@ -10,17 +12,39 @@
             background: linear-gradient(135deg, #f0f0f5, #c9d6ff);
             color: #333;
         }
+
+        /* Header Navigation */
         header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background-color: #1f1f3a;
-            color: #fff;
-            padding: 40px 20px;
-            text-align: center;
+            padding: 20px 30px;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
-        header h1 {
-            margin: 0;
-            font-size: 36px;
-            letter-spacing: 2px;
+
+        .brand {
+            font-size: 22px;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
         }
+
+        nav a {
+            margin-left: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
         .container {
             max-width: 1000px;
             margin: 40px auto;
@@ -29,51 +53,69 @@
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
+
         h2 {
             color: #1f1f3a;
             font-size: 28px;
             margin-bottom: 20px;
         }
+
         p {
             font-size: 18px;
             line-height: 1.8;
             margin-bottom: 20px;
         }
+
         .highlight {
             color: #4a90e2;
             font-weight: bold;
         }
+
         img {
             width: 100%;
             border-radius: 15px;
             margin-bottom: 20px;
         }
+
         @media (max-width: 600px) {
-            header h1 {
-                font-size: 28px;
+            header {
+                flex-direction: column;
+                text-align: center;
             }
-            h2 {
-                font-size: 24px;
+            nav a {
+                margin: 10px;
+                display: inline-block;
             }
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Strongwave Fitness</h1>
-    </header><div class="container">
-    <img src="https://images.unsplash.com/photo-1594737625785-7a6d38b15d12?auto=format&fit=crop&w=1050&q=80" alt="Fitness Gym" />
-    <h2>About Our Business</h2>
-    <p>
-        <span class="highlight">Strongwave Fitness</span> is your ultimate destination for everything fitness-related. We provide high-quality gym equipment, fitness apparel, nutrition supplements, and personalized workout and diet plans designed for all levels.
-    </p>
-    <p>
-        Our mission is to empower individuals to build a healthier lifestyle with guidance, motivation, and premium products. Whether you're starting your fitness journey or you're a seasoned athlete, Strongwave Fitness supports you every step of the way.
-    </p>
-    <p>
-        We believe in creating a community where health, strength, and wellness are celebrated. Join us to transform your body and mind with trusted expertise and innovative fitness solutions.
-    </p>
-</div>
+        <a href="index.html" class="brand">Strong Wave Fitness</a>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="information.html">Information</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <img src="https://images.unsplash.com/photo-1594737625785-7a6d38b15d12?auto=format&fit=crop&w=1050&q=80" alt="Fitness Gym" />
+
+        <h2>Information</h2>
+
+        <p>
+            <span class="highlight">Strong Wave Fitness</span> provides high-quality gym equipment, fitness T-shirts, accessories, and supplements to support your fitness journey.
+        </p>
+        <p>
+            Our products are designed for durability, comfort, and performance. Whether you're a home-gym user, student, or athlete, we offer items that match your goals.
+        </p>
+        <p>
+            Explore our product range and learn how each item can help you improve strength, endurance, and overall health.
+        </p>
+    </div>
 
 </body>
 </html>
