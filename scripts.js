@@ -1,6 +1,8 @@
-/* scripts.js - shared behaviors: year, nav highlight, theme toggle, WA helper */
+/* scripts.js - shared behaviors: year, nav highlight, WA helper
+   Dark/light theme support removed per request.
+*/
 (() => {
-  const THEME_KEY = 'swf-theme';
+  const THEME_KEY = 'swf-theme'; // kept for backward-compat only (unused)
 
   // set year in any element with id="yr"
   function setYear(){
@@ -16,49 +18,6 @@
         if(a.getAttribute('href') === path) a.classList.add('active');
         else a.classList.remove('active');
       }catch(e){}
-    });
-  }
-
-  // apply theme: 'dark' (default) or 'light'
-  function applyTheme(theme){
-    if(theme === 'light'){
-      document.body.classList.add('light');
-      // update all toggle buttons if present
-      document.querySelectorAll('.theme-toggle').forEach(btn=>{
-        btn.textContent = '☀️';
-        btn.setAttribute('aria-pressed','true');
-      });
-    } else {
-      document.body.classList.remove('light');
-      document.querySelectorAll('.theme-toggle').forEach(btn=>{
-        btn.textContent = '🌙';
-        btn.setAttribute('aria-pressed','false');
-      });
-    }
-  }
-
-  // init theme from localStorage or prefers-color-scheme
-  function initTheme(){
-    const saved = localStorage.getItem(THEME_KEY);
-    if(saved) applyTheme(saved);
-    else {
-      const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-      applyTheme(prefersLight ? 'light' : 'dark');
-    }
-  }
-
-  // toggle handler (will be attached to every .theme-toggle button)
-  function toggleTheme(){
-    const isLight = document.body.classList.contains('light');
-    const next = isLight ? 'dark' : 'light';
-    applyTheme(next);
-    localStorage.setItem(THEME_KEY, next);
-  }
-
-  // attach toggle listeners
-  function wireThemeToggle(){
-    document.querySelectorAll('.theme-toggle').forEach(btn=>{
-      btn.addEventListener('click', toggleTheme);
     });
   }
 
@@ -90,14 +49,11 @@
   document.addEventListener('DOMContentLoaded', function(){
     setYear();
     highlightNav();
-    initTheme();
-    wireThemeToggle();
     wireWhatsApp();
   });
 
-  // expose small API for pages (optional)
+  // expose small API (no theme functions)
   window.SWF = {
-    setTheme: applyTheme,
-    toggleTheme
+    // kept intentionally empty for theme removal parity
   };
 })();
