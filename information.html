@@ -6,26 +6,33 @@
   <title>Information - Strong Wave Fitness</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#cfded5;--panel:rgba(0,0,0,0.32);--accent:#00c1d4;--text:#0f1720;--radius:12px}
+    :root{--bg:#cfded5;--header-bg:#6f7973;--panel:rgba(0,0,0,0.32);--accent:#00c1d4;--text:#0f1720;--radius:12px;--muted:rgba(15,23,32,0.65)}
+    .dark{--bg:#0b0b0b;--header-bg:#111;--panel:rgba(255,255,255,0.03);--accent:#00eaff;--text:#e9eef0;--muted:rgba(255,255,255,0.65)}
     html,body{height:100%;margin:0;font-family:'Poppins',system-ui,Arial;background:var(--bg);color:var(--text)}
-    header{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:#6f7973;position:sticky;top:0;z-index:30}
+    header{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:var(--header-bg);position:sticky;top:0;z-index:30}
     .brand{color:#fff;text-decoration:none;font-weight:800;font-size:20px}
     nav a{color:#fff;margin-left:18px;text-decoration:none;font-weight:600}
     nav a.active{text-decoration:underline}
+    .theme-toggle{margin-left:14px;background:transparent;border:1px solid rgba(255,255,255,0.06);padding:6px 10px;border-radius:8px;color:var(--white);cursor:pointer;font-weight:700}
     main{max-width:1100px;margin:28px auto;padding:20px}
     .card{background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03));padding:18px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(0,0,0,0.08)}
-    footer{padding:18px;text-align:center;color:rgba(15,23,32,0.65)}
+    footer{padding:18px;text-align:center;color:var(--muted)}
   </style>
 </head>
 <body>
   <header>
     <a class="brand" href="index.html">Strong Wave Fitness</a>
-    <nav>
-      <a href="home.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="information.html">Information</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+
+    <div style="display:flex;align-items:center;">
+      <nav>
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="information.html">Information</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </div>
   </header>
 
   <main>
@@ -46,6 +53,24 @@
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
     (function(){const path=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('header nav a').forEach(a=>{if(a.getAttribute('href')===path) a.classList.add('active');})})();
+
+    // theme toggle (shared logic)
+    (function(){
+      const KEY = 'swf-theme';
+      const btn = document.getElementById('themeToggle');
+      function apply(theme){
+        if(theme === 'dark'){ document.body.classList.add('dark'); btn.textContent='☀️'; btn.setAttribute('aria-pressed','true'); }
+        else { document.body.classList.remove('dark'); btn.textContent='🌙'; btn.setAttribute('aria-pressed','false'); }
+      }
+      const saved = localStorage.getItem(KEY);
+      if(saved) apply(saved);
+      else apply(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      btn.addEventListener('click', ()=>{
+        const next = document.body.classList.contains('dark') ? 'light' : 'dark';
+        apply(next);
+        localStorage.setItem(KEY, next);
+      });
+    })();
   </script>
 </body>
 </html>
