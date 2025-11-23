@@ -1,121 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Information - Strong Wave Fitness</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f0f0f5, #c9d6ff);
-            color: #333;
-        }
-
-        /* Header Navigation */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #1f1f3a;
-            padding: 20px 30px;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .brand {
-            font-size: 22px;
-            font-weight: 700;
-            text-decoration: none;
-            color: white;
-        }
-
-        nav a {
-            margin-left: 20px;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 18px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 30px;
-            background: rgba(255,255,255,0.9);
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        h2 {
-            color: #1f1f3a;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 18px;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .highlight {
-            color: #4a90e2;
-            font-weight: bold;
-        }
-
-        img {
-            width: 100%;
-            border-radius: 15px;
-            margin-bottom: 20px;
-        }
-
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-            nav a {
-                margin: 10px;
-                display: inline-block;
-            }
-        }
-    </style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Information - Strong Wave Fitness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#cfded5;--panel:rgba(0,0,0,0.32);--accent:#00c1d4;--text:#0f1720;--radius:12px}
+    html,body{height:100%;margin:0;font-family:'Poppins',system-ui,Arial;background:var(--bg);color:var(--text)}
+    header{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:#6f7973;position:sticky;top:0;z-index:30}
+    .brand{color:#fff;text-decoration:none;font-weight:800;font-size:20px}
+    nav a{color:#fff;margin-left:18px;text-decoration:none;font-weight:600}
+    nav a.active{text-decoration:underline}
+    main{max-width:1100px;margin:28px auto;padding:20px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03));padding:18px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(0,0,0,0.08)}
+    footer{padding:18px;text-align:center;color:rgba(15,23,32,0.65)}
+  </style>
 </head>
 <body>
+  <header>
+    <a class="brand" href="index.html">Strong Wave Fitness</a>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="information.html">Information</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-    <header>
-        <a href="index.html" class="brand">Strong Wave Fitness</a>
-        <nav>
-            <a href="home.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="information.html">Information</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
+  <main>
+    <section class="card">
+      <h1>Information</h1>
+      <p>Strong Wave Fitness provides high-quality gym equipment, fitness T-shirts, accessories, and supplements to support your fitness journey. Explore product usage tips, shipping information and warranty details here.</p>
 
-    <div class="container">
-        <img src="https://images.unsplash.com/photo-1594737625785-7a6d38b15d12?auto=format&fit=crop&w=1050&q=80" alt="Fitness Gym" />
+      <h3>Shipping</h3>
+      <p>We deliver nationwide. Shipping times depend on location and stock availability.</p>
 
-        <h2>Information</h2>
+      <h3>Returns & Warranty</h3>
+      <p>We stand behind our products. Contact us within 7 days for returns and warranty assistance.</p>
+    </section>
+  </main>
 
-        <p>
-            <span class="highlight">Strong Wave Fitness</span> provides high-quality gym equipment, fitness T-shirts, accessories, and supplements to support your fitness journey.
-        </p>
-        <p>
-            Our products are designed for durability, comfort, and performance. Whether you're a home-gym user, student, or athlete, we offer items that match your goals.
-        </p>
-        <p>
-            Explore our product range and learn how each item can help you improve strength, endurance, and overall health.
-        </p>
-    </div>
+  <footer>&copy; <span id="yr"></span> Strong Wave Fitness</footer>
 
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    (function(){const path=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('header nav a').forEach(a=>{if(a.getAttribute('href')===path) a.classList.add('active');})})();
+  </script>
 </body>
 </html>
