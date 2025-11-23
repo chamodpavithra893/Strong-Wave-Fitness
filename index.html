@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="styles.css">
 
   <style>
-    /* Background video styling */
-    #bg-video {
+    /* Background video / image styling */
+    .media-bg {
       position: fixed;
       inset: 0;
       width: 100%;
@@ -28,17 +28,32 @@
       pointer-events: none;
     }
     main { position: relative; z-index: 10; }
+    /* Small fix so mobile poster image covers correctly when inserted as <img> */
+    .bg-poster-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: #000;
+    }
   </style>
 </head>
-
 <body>
-  <!-- Background Video -->
-  <video id="bg-video" autoplay muted loop playsinline preload="auto">
-   <source src="videos/gym-bg.mp4" type="video/mp4">
+  <!-- Background media: we place a <video> element that will be removed on mobile -->
+  <!-- Primary (GitHub) video path: videos/gym-bg.mp4 -->
+  <!-- Uploaded test video path included as data-local-src for quick testing in this environment. -->
+  <video id="bg-video" class="media-bg" autoplay muted loop playsinline preload="auto" poster="videos/gym-bg-poster.jpg"
+         data-local-src="/mnt/data/Desktop 2025.11.23 - 11.40.46.01.mp4">
+    <source src="videos/gym-bg.mp4" type="video/mp4">
+    <!-- Fallback source for testing inside this environment -->
+    <source src="/mnt/data/Desktop 2025.11.23 - 11.40.46.01.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
 
-  <div class="video-overlay"></div>
+  <div class="video-overlay" aria-hidden="true"></div>
 
   <!-- Header -->
   <header class="site-header">
@@ -77,5 +92,66 @@
 
   <!-- Shared JS -->
   <script src="scripts.js" defer></script>
+
+  <!-- Mobile-detection and video->image fallback script -->
+  <script>
+    (function(){
+      // paths:
+      // - Preferred GitHub paths (update by uploading your assets to these locations)
+      const GITHUB_VIDEO = 'videos/gym-bg.mp4';
+      const GITHUB_POSTER = 'videos/gym-bg-poster.jpg';
+
+      // - Uploaded test/local files (these exist in the current environment and are useful for testing here)
+      const LOCAL_VIDEO = document.getElementById('bg-video').dataset.localSrc || '/mnt/data/Desktop 2025.11.23 - 11.40.46.01.mp4';
+      const LOCAL_POSTER = '/mnt/data/e20166ae-6695-40db-93f5-f4ca88dd918f.png'; // uploaded poster image path available in history
+
+      // mobile detection: prefer simple, reliable checks
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+                       || (window.matchMedia && window.matchMedia('(pointer:coarse)').matches);
+
+      function usePosterImage(src) {
+        // remove video element if present
+        const video = document.getElementById('bg-video');
+        if (video) {
+          video.parentNode && video.parentNode.removeChild(video);
+        }
+
+        // also remove overlay if you want a different visual, otherwise keep overlay
+        // insert an <img> as full-screen background poster
+        const img = document.createElement('img');
+        img.className = 'bg-poster-img';
+        img.alt = 'Background';
+        img.src = src;
+        img.onload = function(){ /* fine */ };
+        img.onerror = function(){
+          // if poster fails, optionally set a solid background color or do nothing
+          console.warn('Poster image failed to load:', src);
+        };
+        document.body.insertBefore(img, document.querySelector('.video-overlay'));
+      }
+
+      // On mobile, replace video with poster image (use GitHub poster if available, otherwise local test poster)
+      if (isMobile) {
+        // prefer repository poster if you uploaded it, otherwise fall back to local poster
+        const posterToUse = (typeof window !== 'undefined' && location.hostname !== 'localhost' && location.hostname !== '') ? GITHUB_POSTER : LOCAL_POSTER;
+        usePosterImage(posterToUse);
+      } else {
+        // Not mobile: ensure the correct video source is used.
+        // If the GitHub video file is missing, allow the local test video as fallback.
+        const video = document.getElementById('bg-video');
+        if (video) {
+          // Try to use GitHub video path first (for production)
+          const source = video.querySelector('source');
+          if (source) {
+            // set production path first
+            source.src = GITHUB_VIDEO;
+            // reload media element to pick up new source
+            try { video.load(); } catch(e) {}
+            // We keep the test-local source as the second <source> for fallback (already present in the markup).
+          }
+        }
+      }
+    })();
+  </script>
 </body>
 </html>
