@@ -5,40 +5,142 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Strong Wave Fitness</title>
 
-  <!-- Unified font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
-
   <style>
-    :root{
-      --bg:#cfded5;   /* soft green */
-      --panel: rgba(0,0,0,0.32);
-      --accent:#00c1d4;
-      --text:#0f1720;
-      --muted: rgba(15,23,32,0.65);
-      --radius:12px;
+    /* Restored black/white theme to match your screenshot */
+    :root {
+      --bg: #000;
+      --text: #fff;
+      --accent: #00eaff; /* bright cyan for CTAs */
+      --btn-text: #042;
+      --max-width: 1100px;
     }
-    html,body{height:100%;margin:0;font-family:'Poppins',system-ui,Arial; background:var(--bg); color:var(--text);}
-    /* header */
-    header{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:#6f7973;box-shadow:0 4px 0 rgba(0,0,0,0.08);position:sticky;top:0;z-index:30}
-    .brand{color:#fff;text-decoration:none;font-weight:800;font-size:20px}
-    nav a{color:#fff;margin-left:18px;text-decoration:none;font-weight:600;opacity:0.95}
-    nav a.active{text-decoration:underline;color:#fff}
-    /* hero */
-    .hero{padding:48px 20px 28px;text-align:center}
-    .hero h1{font-size:clamp(28px,4.8vw,48px);margin:6px 0;color:#fff}
-    .hero p{max-width:900px;margin:14px auto 0;color:rgba(255,255,255,0.9)}
-    /* content panel */
-    .panel{max-width:1100px;margin:26px auto;padding:24px;background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));border-radius:var(--radius);box-shadow:0 10px 30px rgba(0,0,0,0.08)}
-    .cta-row{display:flex;gap:14px;justify-content:center;margin-top:18px}
-    .btn{background:var(--accent);color:#042;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700}
-    footer{padding:18px;text-align:center;color:var(--muted);margin-top:14px}
-    @media(max-width:720px){header{padding:12px} .panel{margin:14px} .hero p{padding:0 12px}}
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* Header / nav area */
+    header {
+      padding: 18px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .brand {
+      position: absolute;
+      left: 24px;
+      top: 18px;
+      color: var(--text);
+      font-weight: 800;
+      text-decoration: none;
+      font-size: 20px;
+    }
+
+    nav {
+      text-align: center;
+      margin-top: 10px;
+      z-index: 5;
+    }
+
+    nav a {
+      color: var(--text);
+      margin: 0 22px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 18px;
+      display: inline-block;
+    }
+
+    /* big centered title */
+    .hero {
+      padding-top: 48px; /* gives room for header */
+      text-align: center;
+      padding-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 96px); /* large like your screenshot */
+      margin: 0;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    /* CTA buttons under title (kept from unified design) */
+    .cta {
+      margin-top: 18px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: var(--btn-text);
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 800;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    }
+
+    /* ABOUT paragraph block (large, left-aligned like screenshot) */
+    .about-block {
+      max-width: var(--max-width);
+      margin: 60px auto 100px;
+      padding-left: 48px;
+      padding-right: 48px;
+      text-align: left;
+      font-size: clamp(18px, 2.6vw, 22px);
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 18px;
+      text-align: center;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* responsive tweaks */
+    @media (max-width: 820px) {
+      .about-block {
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 17px;
+        margin-top: 36px;
+      }
+      nav a { margin: 0 12px; font-size: 16px; }
+      .brand { left: 14px; font-size: 18px; top: 12px; }
+    }
+
+    @media (max-width: 420px) {
+      h1 { font-size: 40px; }
+      .cta { flex-direction: column; gap: 10px; }
+      .btn { padding: 10px 14px; }
+    }
   </style>
 </head>
 <body>
+
   <header>
+    <!-- brand links to index.html (keeps expected behavior) -->
     <a class="brand" href="index.html">Strong Wave Fitness</a>
-    <nav aria-label="Main">
+
+    <nav aria-label="Main navigation">
       <a href="home.html">Home</a>
       <a href="about.html">About</a>
       <a href="information.html">Information</a>
@@ -47,33 +149,41 @@
   </header>
 
   <main>
-    <section class="hero">
-      <h1>Welcome to Strong Wave Fitness</h1>
-      <p>Durable handmade gym equipment, everyday fitness accessories, and custom-designed fitness T-shirts — designed to make fitness simple, affordable and powerful.</p>
-      <div class="cta-row">
+    <section class="hero" role="banner" aria-labelledby="site-title">
+      <h1 id="site-title">Strong Wave Fitness</h1>
+
+      <!-- keep the buttons you liked -->
+      <div class="cta">
         <a class="btn" href="home.html">Browse Items</a>
         <a class="btn" href="contact.html">Contact Us</a>
       </div>
     </section>
 
-    <section class="panel" aria-labelledby="why">
-      <h2 id="why" style="margin-top:0;color:#fff">Why Strong Wave?</h2>
-      <p style="color:rgba(255,255,255,0.9)">We craft practical, reliable fitness gear for students, home gyms and small spaces. Every product is built with durability and user comfort in mind.</p>
+    <!-- The "About" text exactly as you gave earlier (formatted to match screenshot) -->
+    <section class="about-block" aria-labelledby="about-heading">
+      <p id="about-heading">
+        Strong Wave Fitness is a growing fitness brand dedicated to providing affordable and high-quality products for students, hostel residents, and home gym users. We create durable handmade wooden gym equipment, everyday fitness accessories, and custom-designed fitness T-shirts that bring both style and motivation to your workouts. Our goal is simple: make fitness accessible and enjoyable for everyone. With creativity, strength, and passion behind every product, Strong Wave Fitness supports your journey to becoming stronger—anytime, anywhere.
+      </p>
     </section>
+
+    <footer>
+      &copy; <span id="yr"></span> Strong Wave Fitness
+    </footer>
   </main>
 
-  <footer>&copy; <span id="yr"></span> Strong Wave Fitness</footer>
-
   <script>
+    // Set year and highlight active nav item
     document.getElementById('yr').textContent = new Date().getFullYear();
 
-    // highlight active nav link
-    (function(){
-      const path = location.pathname.split('/').pop() || 'index.html';
-      document.querySelectorAll('header nav a').forEach(a=>{
-        if(a.getAttribute('href') === path) a.classList.add('active');
-      });
+    (function highlightNav(){
+      try {
+        const path = location.pathname.split('/').pop() || 'index.html';
+        document.querySelectorAll('header nav a').forEach(a=>{
+          if (a.getAttribute('href') === path) a.style.textDecoration = 'underline';
+        });
+      } catch(e) {}
     })();
   </script>
+
 </body>
 </html>
