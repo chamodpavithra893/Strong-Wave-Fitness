@@ -12,31 +12,32 @@
       color: #fff;
     }
 
+    /* Header / nav */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 30px;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(8px);
+      padding: 14px 28px;
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(6px);
       position: sticky;
       top: 0;
       z-index: 10;
     }
-
-    header a {
-      color: white;
+    .brand {
+      color: #fff;
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 20px;
     }
-
     nav a {
-      margin-left: 20px;
+      margin-left: 18px;
       text-decoration: none;
       color: #fff;
       font-weight: 600;
+      opacity: 0.9;
     }
+    nav a.active { color: #00eaff; text-decoration: underline; opacity: 1; }
 
     .hero {
       text-align: center;
@@ -112,16 +113,26 @@
       background: #000;
       margin-top: 50px;
     }
+
+    @media (max-width: 720px) {
+      .hero h1 { font-size: 32px; }
+      .hero p { font-size: 16px; }
+      header { padding: 12px 16px; }
+    }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a class="active" href="about.html">About</a>
-  <a href="information.html">Information</a>
-  <a href="contact.html">Contact</a>
-</nav>
+  <!-- Clean header that works on GitHub Pages -->
+  <header>
+    <a class="brand" href="index.html">Strong Wave Fitness</a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a class="active" href="about.html">About</a>
+      <a href="information.html">Information</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
   <section class="hero">
     <h1>About Strong Wave Fitness</h1>
@@ -131,7 +142,7 @@
   <section class="section">
     <h2>Who We Are</h2>
     <p class="about-text">
-      Strong Wave Fitness is a rising fitness brand dedicated to providing high‑quality,
+      Strong Wave Fitness is a rising fitness brand dedicated to providing high-quality,
       affordable workout gear for students, hostel residents, and home gym lovers.
       From durable handmade wooden gym equipment to custom-designed fitness apparel,
       every product we create is crafted with care, passion, and purpose.
@@ -140,7 +151,7 @@
     <div class="features">
       <div class="feature-box">
         <h3>🛠 Handmade Quality</h3>
-        <p>Our wooden equipment is built strong, stable, and long‑lasting for real training.</p>
+        <p>Our wooden equipment is built strong, stable, and long-lasting for real training.</p>
       </div>
       <div class="feature-box">
         <h3>💪 Fitness for Everyone</h3>
@@ -148,7 +159,7 @@
       </div>
       <div class="feature-box">
         <h3>🎽 Custom Apparel</h3>
-        <p>Stylish, motivational T‑shirts designed to keep your mindset sharp during workouts.</p>
+        <p>Stylish, motivational T-shirts designed to keep your mindset sharp during workouts.</p>
       </div>
       <div class="feature-box">
         <h3>🔥 Growing Community</h3>
