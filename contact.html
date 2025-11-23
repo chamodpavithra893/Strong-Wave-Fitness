@@ -1,30 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Contact - Strong Wave Fitness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{ --bg:#0b0b0b; --card:#0f1720; --accent:#25D366; --text:#fff; }
-    html,body{ height:100%; margin:0; font-family:Arial,Helvetica,sans-serif; background:linear-gradient(180deg,#020202 0%,#0b0b0b 100%); color:var(--text); }
-    header{ display:flex; align-items:center; justify-content:space-between; padding:18px 28px; background:rgba(0,0,0,0.45); position:sticky; top:0; z-index:10; }
-    .brand{ color:#fff; text-decoration:none; font-weight:700; font-size:18px; }
-    nav a{ color:#fff; margin-left:18px; text-decoration:none; font-weight:600; }
-    .hero{ padding:60px 20px; text-align:center; }
-    .hero h1{ font-size:36px; margin:6px 0; }
-    .hero p{ opacity:0.9; max-width:820px; margin:10px auto 0; }
-    .contact-wrap{ max-width:1000px; margin:36px auto; padding:22px; display:grid; grid-template-columns:1fr 360px; gap:28px; box-sizing:border-box; }
-    .contact-card{ background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:22px; border-radius:12px; box-shadow:0 8px 30px rgba(0,0,0,0.6); }
-    form label{ display:block; margin:10px 0 6px; font-weight:600; }
-    form input, form textarea{ width:100%; padding:10px 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); background:transparent; color:var(--text); box-sizing:border-box; }
-    form textarea{ min-height:140px; resize:vertical; }
-    .btn{ display:inline-block; background:var(--accent); color:#042; padding:10px 14px; border-radius:10px; font-weight:700; text-decoration:none; }
-    .info{ font-size:15px; line-height:1.6; }
-    .wa-large{ background:linear-gradient(90deg,#13b97b,#1cd37b); color:#042; padding:12px; border-radius:10px; text-decoration:none; font-weight:800; display:inline-flex; gap:10px; align-items:center; }
-    .wa-float{ position:fixed; right:18px; bottom:18px; background:var(--accent); color:#042; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(0,0,0,0.5); text-decoration:none; z-index:999; }
-    .wa-icon{ width:22px; height:22px; }
-    .note{ font-size:13px; opacity:0.85; margin-top:8px; }
-    @media(max-width:920px){ .contact-wrap{ grid-template-columns:1fr; padding:16px; } .wa-large{ width:100%; justify-content:center; } }
+    :root{--bg:#cfded5;--panel:rgba(0,0,0,0.32);--accent:#00c1d4;--text:#0f1720;--radius:12px}
+    html,body{height:100%;margin:0;font-family:'Poppins',system-ui,Arial;background:var(--bg);color:var(--text)}
+    header{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:#6f7973;position:sticky;top:0;z-index:30}
+    .brand{color:#fff;text-decoration:none;font-weight:800;font-size:20px}
+    nav a{color:#fff;margin-left:18px;text-decoration:none;font-weight:600}
+    nav a.active{text-decoration:underline}
+    main{max-width:1000px;margin:28px auto;padding:20px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03));padding:22px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(0,0,0,0.08)}
+    label{display:block;margin:10px 0 6px;font-weight:600}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.08);box-sizing:border-box}
+    textarea{min-height:120px;resize:vertical}
+    .btn{background:var(--accent);color:#042;padding:10px 14px;border-radius:10px;text-decoration:none;border:none;font-weight:700;cursor:pointer}
+    .whatsapp{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#13b97b,#1cd37b);padding:10px 12px;border-radius:10px;color:#042;text-decoration:none;font-weight:800;margin-left:12px}
+    footer{padding:18px;text-align:center;color:rgba(15,23,32,0.65)}
+    @media(max-width:720px){main{padding:12px}}
   </style>
 </head>
 <body>
@@ -38,92 +34,49 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Contact Us</h1>
-    <p>Questions about products, orders or custom gear? Send us a message or start a WhatsApp chat instantly.</p>
-  </section>
+  <main>
+    <section class="card">
+      <h1>Contact Us</h1>
+      <p>Questions about products, orders, or custom gear? Send a message or chat on WhatsApp.</p>
 
-  <main class="contact-wrap">
-    <div class="contact-card">
-      <h2 style="margin-top:0">Send us a message</h2>
-      <form id="contactForm" action="mailto:you@yourdomain.com" method="post" enctype="text/plain" onsubmit="return handleMailto(event)">
+      <!-- Formspree -->
+      <form id="contactForm" method="POST" action="https://formspree.io/f/movbyvnj">
+        <input type="hidden" name="_subject" value="Website contact: Strong Wave Fitness">
         <label for="name">Name</label>
-        <input id="name" name="name" required placeholder="Your full name" />
+        <input id="name" name="name" required placeholder="Your full name">
 
         <label for="email">Email</label>
-        <input id="email" name="email" type="email" required placeholder="you@example.com" />
+        <input id="email" name="email" type="email" required placeholder="you@example.com">
 
         <label for="message">Message</label>
         <textarea id="message" name="message" required placeholder="How can we help?"></textarea>
 
-        <div style="margin-top:14px; display:flex; gap:12px; align-items:center;">
-          <button type="submit" class="btn">Send Email</button>
-          <a id="waButton" class="wa-large" href="#" onclick="openWhatsApp();return false;">
-            <svg class="wa-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20.52 3.48A11.9 11.9 0 0012 0C5.373 0 .004 5.373 0 12c0 2.117.554 4.192 1.606 6.036L0 24l6.132-1.601A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12 0-3.204-1.249-6.213-3.48-8.52z" fill="#fff" opacity="0.06"/>
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.149-.198.297-.768.966-.941 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.477-.883-.786-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.149-.672-1.611-.922-2.205-.242-.579-.487-.5-.672-.51l-.572-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487  .709.306 1.26.489 1.692.626.71.227 1.357.195 1.87.118.571-.085 1.758-.718 2.006-1.41.248-.692.248-1.287.173-1.41-.074-.123-.272-.198-.57-.347z" fill="#042"/>
-            </svg>
-            Message on WhatsApp
-          </a>
+        <div style="margin-top:14px;display:flex;flex-wrap:wrap;align-items:center">
+          <button class="btn" type="submit">Send Message</button>
+          <a class="whatsapp" href="#" id="waBtn">Message on WhatsApp</a>
         </div>
 
-        <p class="note">Tip: Replace <code>94701421968</code> inside the JavaScript with your WhatsApp number in international format (no + or leading zeros). Example for Sri Lanka: <code>94771234567</code>.</p>
+        <p style="margin-top:12px;color:rgba(0,0,0,0.6)">Tip: messages will be sent to the email registered with Formspree.</p>
       </form>
-    </div>
-
-    <aside class="contact-card">
-      <h3>Quick contact</h3>
-      <p class="info"><strong>Email:</strong> info@strongwave.example<br><strong>Phone:</strong> +94 77 123 4567</p>
-
-      <div style="margin-top:18px">
-        <a id="waDirect" class="wa-large" href="#" onclick="openWhatsApp();return false;">
-          <svg class="wa-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20.52 3.48A11.9 11.9 0 0012 0C5.373 0 .004 5.373 0 12c0 2.117.554 4.192 1.606 6.036L0 24l6.132-1.601A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12 0-3.204-1.249-6.213-3.48-8.52z" fill="#fff" opacity="0.06"/>
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.149-.198.297-.768.966-.941 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.477-.883-.786-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.149-.672-1.611-.922-2.205-.242-.579-.487-.5-.672-.51l-.572-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487  .709.306 1.26.489 1.692.626.71.227 1.357.195 1.87.118.571-.085 1.758-.718 2.006-1.41.248-.692.248-1.287.173-1.41-.074-.123-.272-.198-.57-.347z" fill="#042"/>
-          </svg>
-          Chat on WhatsApp
-        </a>
-      </div>
-
-      <hr style="border:none; height:1px; background:rgba(255,255,255,0.04); margin:18px 0">
-
-      <p class="info">Or message us directly using the floating WhatsApp button at the bottom-right of the page.</p>
-
-    </aside>
+    </section>
   </main>
 
-  <!-- floating quick WhatsApp button -->
-  <a id="waFloat" class="wa-float" href="#" onclick="openWhatsApp();return false;" aria-label="Open WhatsApp chat">
-    <svg class="wa-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20.52 3.48A11.9 11.9 0 0012 0C5.373 0 .004 5.373 0 12c0 2.117.554 4.192 1.606 6.036L0 24l6.132-1.601A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12 0-3.204-1.249-6.213-3.48-8.52z" fill="#fff" opacity="0.06"/>
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.149-.198.297-.768.966-.941 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.477-.883-.786-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.149-.672-1.611-.922-2.205-.242-.579-.487-.5-.672-.51l-.572-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487  .709.306 1.26.489 1.692.626.71.227 1.357.195 1.87.118.571-.085 1.758-.718 2.006-1.41.248-.692.248-1.287.173-1.41-.074-.123-.272-.198-.57-.347z" fill="#042"/>
-    </svg>
-  </a>
+  <footer>&copy; <span id="yr"></span> Strong Wave Fitness</footer>
 
   <script>
-    const WHATSAPP_NUMBER = '94701421968';
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    (function(){const path=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('header nav a').forEach(a=>{if(a.getAttribute('href')===path) a.classList.add('active');})})();
 
-    function openWhatsApp(){
+    // WhatsApp quick chat (your number)
+    const WA = '94701421968';
+    document.getElementById('waBtn').addEventListener('click', function(e){
+      e.preventDefault();
       const name = encodeURIComponent(document.getElementById('name')?.value || '');
       const email = encodeURIComponent(document.getElementById('email')?.value || '');
-      const msg = encodeURIComponent(document.getElementById('message')?.value || 'Hello! I would like to know more about your products.');
+      const msg = encodeURIComponent(document.getElementById('message')?.value || 'Hello! I would like more info.');
       const text = `Name: ${name}%0AEmail: ${email}%0A%0AMessage: ${msg}`;
-      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
-      window.open(url, '_blank');
-    }
-
-    function handleMailto(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value || '';
-      const email = document.getElementById('email').value || '';
-      const message = document.getElementById('message').value || '';
-      const subject = encodeURIComponent('Contact from website - ' + name);
-      const body = encodeURIComponent('Name: ' + name + "\nEmail: " + email + "\n\n" + message);
-      const mailto = `mailto:you@yourdomain.com?subject=${subject}&body=${body}`;
-      window.location.href = mailto;
-      return false;
-    }
+      window.open(`https://wa.me/${WA}?text=${text}`, '_blank');
+    });
   </script>
 </body>
 </html>
-
