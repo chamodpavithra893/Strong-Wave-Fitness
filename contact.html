@@ -8,8 +8,8 @@
     :root{ --bg:#0b0b0b; --card:#0f1720; --accent:#25D366; --text:#fff; }
     html,body{ height:100%; margin:0; font-family:Arial,Helvetica,sans-serif; background:linear-gradient(180deg,#020202 0%,#0b0b0b 100%); color:var(--text); }
     header{ display:flex; align-items:center; justify-content:space-between; padding:18px 28px; background:rgba(0,0,0,0.45); position:sticky; top:0; z-index:10; }
-    header a.brand{ color:#fff; text-decoration:none; font-weight:700; font-size:18px; }
-    header nav a{ color:#fff; margin-left:18px; text-decoration:none; font-weight:600; }
+    .brand{ color:#fff; text-decoration:none; font-weight:700; font-size:18px; }
+    nav a{ color:#fff; margin-left:18px; text-decoration:none; font-weight:600; }
     .hero{ padding:60px 20px; text-align:center; }
     .hero h1{ font-size:36px; margin:6px 0; }
     .hero p{ opacity:0.9; max-width:820px; margin:10px auto 0; }
@@ -20,7 +20,6 @@
     form textarea{ min-height:140px; resize:vertical; }
     .btn{ display:inline-block; background:var(--accent); color:#042; padding:10px 14px; border-radius:10px; font-weight:700; text-decoration:none; }
     .info{ font-size:15px; line-height:1.6; }
-    .whatsapp-panel{ display:flex; flex-direction:column; gap:12px; }
     .wa-large{ background:linear-gradient(90deg,#13b97b,#1cd37b); color:#042; padding:12px; border-radius:10px; text-decoration:none; font-weight:800; display:inline-flex; gap:10px; align-items:center; }
     .wa-float{ position:fixed; right:18px; bottom:18px; background:var(--accent); color:#042; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(0,0,0,0.5); text-decoration:none; z-index:999; }
     .wa-icon{ width:22px; height:22px; }
@@ -30,12 +29,12 @@
 </head>
 <body>
   <header>
-    <!-- note: replace /mnt/data/home.html with index.html or your desired homepage path after publishing -->
-    <a class="brand" href="index.html">Strong Wave Fitness</a>
+    <a class="brand" href="home.html">Strong Wave Fitness</a>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="home.html">Home</a>
       <a href="about.html">About</a>
       <a href="information.html">Information</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
@@ -47,7 +46,6 @@
   <main class="contact-wrap">
     <div class="contact-card">
       <h2 style="margin-top:0">Send us a message</h2>
-      <!-- Simple mailto fallback form: submits via user's email client -->
       <form id="contactForm" action="mailto:you@yourdomain.com" method="post" enctype="text/plain" onsubmit="return handleMailto(event)">
         <label for="name">Name</label>
         <input id="name" name="name" required placeholder="Your full name" />
@@ -61,7 +59,6 @@
         <div style="margin-top:14px; display:flex; gap:12px; align-items:center;">
           <button type="submit" class="btn">Send Email</button>
           <a id="waButton" class="wa-large" href="#" onclick="openWhatsApp();return false;">
-            <!-- inline SVG WhatsApp icon -->
             <svg class="wa-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M20.52 3.48A11.9 11.9 0 0012 0C5.373 0 .004 5.373 0 12c0 2.117.554 4.192 1.606 6.036L0 24l6.132-1.601A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12 0-3.204-1.249-6.213-3.48-8.52z" fill="#fff" opacity="0.06"/>
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.149-.198.297-.768.966-.941 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.477-.883-.786-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.149-.672-1.611-.922-2.205-.242-.579-.487-.5-.672-.51l-.572-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487  .709.306 1.26.489 1.692.626.71.227 1.357.195 1.87.118.571-.085 1.758-.718 2.006-1.41.248-.692.248-1.287.173-1.41-.074-.123-.272-.198-.57-.347z" fill="#042"/>
@@ -80,7 +77,6 @@
 
       <div style="margin-top:18px">
         <a id="waDirect" class="wa-large" href="#" onclick="openWhatsApp();return false;">
-          <!-- call to action -->
           <svg class="wa-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20.52 3.48A11.9 11.9 0 0012 0C5.373 0 .004 5.373 0 12c0 2.117.554 4.192 1.606 6.036L0 24l6.132-1.601A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12 0-3.204-1.249-6.213-3.48-8.52z" fill="#fff" opacity="0.06"/>
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.149-.198.297-.768.966-.941 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.477-.883-.786-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.149-.672-1.611-.922-2.205-.242-.579-.487-.5-.672-.51l-.572-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487  .709.306 1.26.489 1.692.626.71.227 1.357.195 1.87.118.571-.085 1.758-.718 2.006-1.41.248-.692.248-1.287.173-1.41-.074-.123-.272-.198-.57-.347z" fill="#042"/>
@@ -105,8 +101,6 @@
   </a>
 
   <script>
-    // Replace 94701421968 with your WhatsApp phone number in international format (no + or leading zeros).
-    // Example (Sri Lanka): 94771234567
     const WHATSAPP_NUMBER = '94701421968';
 
     function openWhatsApp(){
@@ -114,17 +108,10 @@
       const email = encodeURIComponent(document.getElementById('email')?.value || '');
       const msg = encodeURIComponent(document.getElementById('message')?.value || 'Hello! I would like to know more about your products.');
       const text = `Name: ${name}%0AEmail: ${email}%0A%0AMessage: ${msg}`;
-
-      if(!WHATSAPP_NUMBER || WHATSAPP_NUMBER === '94701421968'){
-        alert('Please update the contact page JavaScript with your WhatsApp number (replace 94701421968). Example: 94771234567');
-        return;
-      }
-
       const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
       window.open(url, '_blank');
     }
 
-    // mailto fallback: open user's email client with fields prefilled
     function handleMailto(e){
       e.preventDefault();
       const name = document.getElementById('name').value || '';
