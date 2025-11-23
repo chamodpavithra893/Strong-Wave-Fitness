@@ -1,57 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Strong Wave Fitness</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="0; url=home.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting to Home...</title>
+
   <style>
-    html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif;background:#000;color:#fff}
-    #bg-video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none;background:#000}
-    .overlay{position:fixed;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(0,0,0,0.15),rgba(0,0,0,0.45));pointer-events:none}
-    .content{position:relative;z-index:2;text-align:center;padding:80px 20px;box-sizing:border-box;min-height:100vh;display:flex;flex-direction:column;align-items:center}
-    header{width:100%;display:flex;justify-content:center;padding:18px 24px;position:fixed;top:0;left:0;z-index:3}
-    nav a{color:#fff;margin:0 18px;text-decoration:none;font-weight:700}
-    h1{font-size:clamp(28px,6vw,56px);margin:70px 0 10px;text-shadow:0 6px 18px rgba(0,0,0,0.6)}
-    .about-section{max-width:1100px;background:rgba(0,0,0,0.25);padding:20px;border-radius:10px;font-size:18px;line-height:1.6;text-align:left}
-    footer{margin-top:auto;padding:18px 0;opacity:0.9}
-    @media(max-width:720px){.about-section{text-align:left;font-size:15px}}
+    body {
+      background: #000;
+      color: #fff;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 10px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    a {
+      color: #00eaff;
+      font-weight: bold;
+      text-decoration: none;
+    }
   </style>
 </head>
+
 <body>
 
-  <!-- background video (optional) -->
-  <video id="bg-video" autoplay muted loop playsinline preload="auto" poster="videos/gym-bg-poster.jpg">
-    <source src="videos/gym-bg.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-  <div class="overlay" aria-hidden="true"></div>
-
-<header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="information.html">Information</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
-  
-  <main class="content" role="main" aria-labelledby="site-title">
-    <h1 id="site-title">Strong Wave Fitness</h1>
-
-    <div class="about-section" id="about">
-      <p>
-        Strong Wave Fitness is a growing fitness brand dedicated to providing affordable and high-quality products for students, hostel residents, and home gym users. We create durable handmade wooden gym equipment, everyday fitness accessories, and custom-designed fitness T-shirts that bring both style and motivation to your workouts. Our goal is simple: make fitness accessible and enjoyable for everyone. With creativity, strength, and passion behind every product, Strong Wave Fitness supports your journey to becoming stronger—anytime, anywhere.
-      </p>
-    </div>
-
-    <footer>
-      &copy; <span id="yr"></span> Strong Wave Fitness
-    </footer>
-  </main>
+  <div>
+    <h2>Redirecting to Home Page...</h2>
+    <p>If you are not redirected automatically, <a href="home.html">click here</a>.</p>
+  </div>
 
   <script>
-    document.getElementById('yr').textContent = new Date().getFullYear();
+    // JavaScript fallback redirect for browsers that ignore meta refresh
+    setTimeout(() => {
+      window.location.href = "home.html";
+    }, 10);
   </script>
+
 </body>
 </html>
